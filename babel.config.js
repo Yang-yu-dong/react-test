@@ -7,6 +7,7 @@ module.exports = {
               "corejs": 3
           }
       ],
-      "@babel/preset-react"
+      "@babel/preset-react",
+      "@babel/preset-flow"
   ]
 }

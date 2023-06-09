@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -21,11 +21,27 @@ module.exports = {
       }
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      'react': path.resolve(__dirname, '../react/packages/react'),
+      'react-dom': path.resolve(__dirname, '../react/packages/react-dom'),
+      'shared': path.resolve(__dirname, '../react/packages/shared'),
+      'react-reconciler': path.resolve(__dirname, '../react/packages/react-reconciler'),
+      'scheduler': path.resolve(__dirname, '../react/packages/scheduler/index')
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html'
-    })
+    }),
+
+    new webpack.DefinePlugin({
+      __DEV__: true,
+      __EXPERIMENTAL__: true,
+      __PROFILE__: true
+    }),
   ],
   devServer: {
     port: 3000, // 端口

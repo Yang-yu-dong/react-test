@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import * as React from 'react'
+const useState = React.useState
 
-export default () => {
+const App =  () => {
   const [num, setNum] = useState(0)
   return (
     <React.Fragment>
@@ -9,3 +10,5 @@ export default () => {
     </React.Fragment>
   )
 }
+
+export default App
